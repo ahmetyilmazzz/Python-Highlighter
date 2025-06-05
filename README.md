@@ -196,6 +196,6 @@ Vurgulayıcı, Python kodunu saniyenin altında yanıt süreleri ile başarıyla
 
 ## 📚 makale ve video
 
-**📰 Makale:** [Python Sözdizimi Vurgulayıcı Yapmak](medium-link)
+**📰 Makale:** [Python Sözdizimi Vurgulayıcı Yapmak](https://medium.com/@ahyil.fb/python-için-gerçek-zamanlı-sözdizimi-vurgulayıcı-yapmak-derleyici-teorisinden-pratiğe-51d11502f4d8)
 
 **🎥 Video:** [Python Highlighter](https://youtu.be/E4HlKmfrdbM)
