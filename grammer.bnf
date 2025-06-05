@@ -1,0 +1,113 @@
+// Not: Bu, parser.py'de uygulanan Python alt kümesi dilbilgisinin
+// basitleştirilmiş bir BNF benzeri temsilidir.
+// Tam bir Python dilbilgisi değildir ve bazı detaylar çıkarılmıştır.
+// İsteğe bağlı elemanlar için [eleman]?, sıfır veya daha fazla tekrar için [eleman]*
+// ve bir veya daha fazla tekrar için [eleman]+ kullanılmıştır.
+// Gruplama için ( ) kullanılmıştır.
+// | VEYA anlamına gelir.
+
+<program> ::= <statement_list>
+
+<statement_list> ::= <statement>*
+
+<statement> ::= <assignment_statement>
+              | <if_statement>
+              | <while_statement>
+              | <for_statement>
+              | <function_def_statement>
+              | <class_def_statement>
+              | <return_statement>
+              | <try_statement>
+              | <raise_statement>
+              | <match_statement>
+              | <expression_statement>  // print(), my_func() gibi ifadeler
+              | <simple_statement>      // break, continue, pass
+              | <comment>               // Yorumlar genellikle ayrıştırıcıda farklı işlenir
+
+<simple_statement> ::= "break" | "continue" | "pass"
+
+<assignment_statement> ::= <identifier> "=" <expression>
+
+<if_statement> ::= "if" <expression> ":" <suite>
+                   ( "elif" <expression> ":" <suite> )*
+                   [ "else" ":" <suite> ]?
+
+<while_statement> ::= "while" <expression> ":" <suite>
+
+<for_statement> ::= "for" <identifier> "in" <expression> ":" <suite>
+
+<function_def_statement> ::= "def" <identifier> "(" [ <parameter_list> ] ")" ":" <suite>
+
+<class_def_statement> ::= "class" <identifier> [ "(" [ <identifier_list> ] ")" ]? ":" <suite>
+
+<parameter_list> ::= <identifier> ( "," <identifier> )*
+
+<identifier_list> ::= <identifier> ( "," <identifier> )*
+
+<return_statement> ::= "return" [ <expression> ]?
+
+<try_statement> ::= "try" ":" <suite>
+                    ( <except_clause> )+
+                    [ "finally" ":" <suite> ]?
+                  | "try" ":" <suite>
+                    "finally" ":" <suite>
+
+<except_clause> ::= "except" [ <expression> [ ("as" | ",") <identifier> ]? ]? ":" <suite>
+
+<raise_statement> ::= "raise" [ <expression> ]?
+
+<match_statement> ::= "match" <expression> ":" <case_clause>+
+
+<case_clause> ::= "case" <pattern> [ "if" <expression> ]? ":" <suite>
+// <pattern> detayı burada basitleştirilmiştir.
+
+<suite> ::= <statement_list> // Pratikte tek satır ifade veya girintili blok olabilir.
+
+<expression_statement> ::= <expression>
+
+<expression> ::= <logical_or_expr>
+
+<logical_or_expr> ::= <logical_and_expr> ( "or" <logical_and_expr> )*
+
+<logical_and_expr> ::= <not_expr> ( "and" <not_expr> )*
+
+<not_expr> ::= [ "not" ] <comparison_expr>
+
+<comparison_expr> ::= <arith_expr> [ ( "==" | "!=" | "<" | "<=" | ">" | ">=" | "in" | "not" "in" | "is" | "is" "not" ) <arith_expr> ]*
+
+<arith_expr> ::= <term> ( ( "+" | "-" ) <term> )*
+
+<term> ::= <factor> ( ( "*" | "/" | "%" | "//" ) <factor> )*
+
+<factor> ::= ( "+" | "-" ) <factor>
+           | <power>
+
+<power> ::= <atom_expr> [ "**" <factor> ]?
+
+<atom_expr> ::= <atom> [ <trailer> ]*
+
+<atom> ::= <identifier>
+         | <number_literal>
+         | <string_literal_group> // "hello" 'world'
+         | <list_literal>
+         | "(" <expression> ")"
+         | "True" | "False" | "None"
+
+<string_literal_group> ::= <string_literal>+
+
+<string_literal> ::= STRING_QUOTE STRING_CONTENT? (ESCAPE_CHAR STRING_CONTENT?)* STRING_QUOTE
+                    | BUILTIN // print, str gibi bazı builtinler doğrudan çağrılabilir
+
+<number_literal> ::= NUMBER
+
+<list_literal> ::= "[" [ <expression_list> ] "]"
+
+<expression_list> ::= <expression> ( "," <expression> )*
+
+<trailer> ::= "(" [ <argument_list> ] ")"   // Fonksiyon çağrısı
+            | "[" <expression_list> "]"     // İndeksleme/Dilimleme (basitleştirilmiş)
+            | "." <identifier>              // Nitelik erişimi (basitleştirilmiş)
+
+<argument_list> ::= <expression> ( "," <expression> )*
+
+<identifier> ::= IDENTIFIER | BUILTIN // BUILTIN'ler bazen identifier gibi davranır (örn: print)
