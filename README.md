@@ -196,6 +196,6 @@ Vurgulayıcı, Python kodunu saniyenin altında yanıt süreleri ile başarıyla
 
 ## 📚 makale ve video
 
-**📰 Makale:** [Python Sözdizimi Vurgulayıcı Yapmak - Sıfırdan Kod Editörü](medium-link)
+**📰 Makale:** [Python Sözdizimi Vurgulayıcı Yapmak - Sıfırdan Kod Editörü]([medium-link](https://medium.com/@ahyil.fb/python-i%C3%A7in-ger%C3%A7ek-zamanl%C4%B1-s%C3%B6zdizimi-vurgulay%C4%B1c%C4%B1-yapmak-derleyici-teorisinden-prati%C4%9Fe-51d11502f4d8))
 
-**🎥 Video:** [Kendi Kod Editörümü Yaptım! VS Code Nasıl Çalışır?](youtube-link)
+**🎥 Video:** [Kendi Kod Editörümü Yaptım! VS Code Nasıl Çalışır?]([youtube-link](https://youtu.be/E4HlKmfrdbM))
