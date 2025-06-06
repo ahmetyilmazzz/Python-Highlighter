@@ -190,8 +190,9 @@ Vurgulayıcı, Python kodunu saniyenin altında yanıt süreleri ile başarıyla
 
 ---
 
-**Geliştirici**: Programlama Dilleri dersi projesi kapsamında geliştirildi  
-**Lisans**: Açık kaynak eğitim projesi
+## Lisans
+
+Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasını inceleyebilirsiniz.
 
 ## 📚 makale ve video
 
