@@ -42,7 +42,6 @@ python-highlighter/
 │   └── parser.py           # Sözdizimi ayrıştırıcı (özyinelemeli iniş)
 ├── documentation.md         # Teknik uygulama detayları
 ├── grammar.bnf             # Biçimsel gramer tanımı (BNF formatı)
-├── tokens.txt              # Token türü tanımları ve desenleri
 └── README.md               # Bu dosya
 ```
 
